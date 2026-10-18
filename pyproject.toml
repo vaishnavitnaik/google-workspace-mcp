@@ -1,0 +1,17 @@
+[project]
+name = "gmail-mcp"
+version = "0.1.0"
+description = "Gmail Model Context Protocol (MCP) Server"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "mcp[cli]>=2.3.0",
+    "google-api-python-client>=2.151.0",
+    "google-auth-httplib2>=0.2.0",
+    "google-auth-oauthlib>=1.2.0",
+    "anyio>=4.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

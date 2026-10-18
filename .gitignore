@@ -1,0 +1,22 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Secrets and OAuth credentials
+credentials.json
+client_secret*.json
+token.json
+*.token
+.env
+
+# OS and IDE files
+.DS_Store
+.idea/
+.vscode/

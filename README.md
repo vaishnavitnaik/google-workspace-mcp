@@ -35,7 +35,7 @@ A custom, open-source **Model Context Protocol (MCP)** server that connects AI a
 ## 📚 Documentation & Guides
 
 * **[Complete Run & Setup Guide (RUN_GUIDE.md)](RUN_GUIDE.md)** — Step-by-step instructions for running OAuth login and testing.
-* **[Beginner's Guide to MCP & Building New Servers (MCP_GUIDE.md)](MCP_GUIDE.md)** — Learn what MCP is and follow the blueprint to build your own custom server from scratch.
+
 
 ---
 

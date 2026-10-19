@@ -29,6 +29,10 @@ A custom, open-source **Model Context Protocol (MCP)** server that connects AI a
 | `list_labels` | *none* | List all Gmail labels (system labels like `INBOX`, `SENT`, `TRASH`, and user labels). |
 | `modify_email_labels`| `message_id: str`, `add_labels: list`, `remove_labels: list` | Add or remove label IDs (e.g. mark as read, star, archive). |
 | `trash_email` | `message_id: str` | Move an email to the Gmail Trash by its message ID. |
+| `list_calendars` | *none* | List all Google Calendar calendars the user has access to. |
+| `list_events` | `calendar_id: str = "primary", time_min: str | None = None, time_max: str | None = None, max_results: int = 10` | List upcoming events for a calendar. |
+| `create_event` | `calendar_id: str = "primary", summary: str = "Untitled Event", start: str = "", end: str = "", description: str = "", attendees: list[dict] | None = None, send_updates: str = "all"` | Create a new event on a calendar. |
+| `delete_event` | `calendar_id: str = "primary", event_id: str = ""` | Delete an existing calendar event by its ID. |
 
 ---
 

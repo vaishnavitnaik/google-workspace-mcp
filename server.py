@@ -8,6 +8,7 @@ import anyio
 from mcp.server.mcpserver import MCPServer
 import tools
 
+
 mcp = MCPServer(name="gmail-mcp")
 
 
@@ -124,6 +125,89 @@ def trash_email(message_id: str) -> str:
     except Exception as e:
         return f"Error trashing email '{message_id}': {e}"
 
+# ------------------------------------------------------------
+# Google Calendar integration tools (exposed via MCP)
+
+@mcp.tool(
+    name="list_calendars",
+    description="List all Google Calendar calendars the user has access to."
+)
+def list_calendars() -> str:
+    """List calendars via the Calendar API."""
+    try:
+        result = tools.list_calendars()
+        return json.dumps(result, indent=2)
+    except Exception as e:
+        return f"Error listing calendars: {e}"
+
+@mcp.tool(
+    name="list_events",
+    description=(
+        "List upcoming events for a calendar. Parameters: calendar_id (default 'primary'), "
+        "time_min (RFC3339 timestamp), time_max, max_results."
+    ),
+)
+def list_events(
+    calendar_id: str = "primary",
+    time_min: str | None = None,
+    time_max: str | None = None,
+    max_results: int = 10,
+) -> str:
+    """Retrieve events from a calendar."""
+    try:
+        result = tools.list_events(
+            calendar_id=calendar_id,
+            time_min=time_min,
+            time_max=time_max,
+            max_results=max_results,
+        )
+        return json.dumps(result, indent=2)
+    except Exception as e:
+        return f"Error listing events: {e}"
+
+@mcp.tool(
+    name="create_event",
+    description=(
+        "Create a new event on a calendar. Required fields: summary, start, end (RFC3339). "
+        "Optional: description, attendees (list of {\"email\": \"addr\"})."
+    ),
+)
+def create_event(
+    calendar_id: str = "primary",
+    summary: str = "Untitled Event",
+    start: str = "",
+    end: str = "",
+    description: str = "",
+    attendees: list[dict] | None = None,
+    send_updates: str = "all",
+) -> str:
+    """Create a calendar event via the Calendar API."""
+    try:
+        result = tools.create_event(
+            calendar_id=calendar_id,
+            summary=summary,
+            start=start,
+            end=end,
+            description=description,
+            attendees=attendees,
+            send_updates=send_updates,
+        )
+        return json.dumps(result, indent=2)
+    except Exception as e:
+        return f"Error creating event: {e}"
+
+@mcp.tool(
+    name="delete_event",
+    description="Delete an existing calendar event by its ID.",
+)
+def delete_event(calendar_id: str = "primary", event_id: str = "") -> str:
+    """Delete a calendar event."""
+    try:
+        result = tools.delete_event(calendar_id=calendar_id, event_id=event_id)
+        return json.dumps(result, indent=2)
+    except Exception as e:
+        return f"Error deleting event: {e}"
+# ------------------------------------------------------------
 
 if __name__ == "__main__":
     anyio.run(mcp.run_stdio_async)

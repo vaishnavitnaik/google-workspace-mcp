@@ -11,9 +11,9 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
-# Scopes required to read, search, draft, send, and modify labels/trash in Gmail
 SCOPES = [
     "https://www.googleapis.com/auth/gmail.modify",
+    "https://www.googleapis.com/auth/calendar",
 ]
 
 BASE_DIR = Path(__file__).parent.resolve()

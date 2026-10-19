@@ -1,17 +1,5 @@
-"""
-Gmail MCP tools package.
-"""
+# Package initializer for tools
+# Export Gmail and Calendar helper functions for convenient imports
 
-from .reader import search_emails, read_email
-from .sender import send_email, create_draft
-from .manager import trash_email, list_labels, modify_email_labels
-
-__all__ = [
-    "search_emails",
-    "read_email",
-    "send_email",
-    "create_draft",
-    "trash_email",
-    "list_labels",
-    "modify_email_labels",
-]
+from .gmail import *  # noqa: F403,F401
+from .calendar import *  # noqa: F403,F401

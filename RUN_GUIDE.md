@@ -70,6 +70,10 @@ Once authenticated, verify that reading, searching, and managing emails works:
 * **Search Emails**: Searches for recent unread or inbox messages (`is:unread` or `in:inbox`).
 * **Read Email**: Fetches headers, full text body, and attachment metadata of the first message.
 * **Send & Trash**: Explains how to invoke sending and trashing from code.
+* **List Calendars**: Retrieve all calendars accessible to the user.
+* **List Events**: List upcoming events from a specific calendar.
+* **Create Event**: Create a new calendar event with title, time, and description.
+* **Delete Event**: Delete an existing event by its ID.
 
 ---
 
